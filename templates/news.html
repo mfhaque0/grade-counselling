@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="news-header">
+    <h1>Latest Educational News & Updates</h1>
+</section>
+
+<div class="news-container">
+    {% for article in articles %}
+    <article class="news-item">
+        <div class="news-meta">
+            <span class="news-date">{{ article.date }}</span>
+            <span class="news-category">{{ article.category }}</span>
+        </div>
+        <h2 class="news-title">{{ article.title }}</h2>
+        <p class="news-summary">{{ article.summary }}</p>
+        <a href="/news/{{ article.id }}" class="read-more">Read Full Story →</a>
+    </article>
+    <hr class="news-divider">
+    {% endfor %}
+</div>
+{% endblock %}

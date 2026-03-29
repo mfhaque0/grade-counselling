@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+<h2>Edit News</h2>
+
+<form method="POST">
+
+<input name="title" value="{{ article.title }}">
+<br><br>
+
+<input name="summary" value="{{ article.summary }}">
+<br><br>
+
+<input name="date" value="{{ article.date }}">
+<br><br>
+
+<input name="category" value="{{ article.category }}">
+<br><br>
+
+<button>Update News</button>
+
+</form>
+
+</div>
+
+{% endblock %}

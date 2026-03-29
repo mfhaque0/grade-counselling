@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="loader-bar" style="
+position:fixed;
+top:0;
+left:0;
+width:0%;
+height:4px;
+background:linear-gradient(90deg,#00ffcc,#00bfff);
+z-index:9999;
+transition:width 2s ease;
+"></div>
+
+<div class="container">
+
+    <div class="predictor-box">
+
+        <h2>Engineering Rank Predictor</h2>
+
+        <!-- MARKS TO PERCENTILE -->
+
+        <h3>Marks → Percentile</h3>
+
+        <form action="/predictor/marks" method="POST" onsubmit="return handleSubmit(this)">
+
+           <input type="number"   placeholder="Enter Marks (out of 300)" name="marks" min="0" max="300" required>
+            
+            <button type="submit">Calculate Percentile</button>
+
+        </form>
+
+        {% if percentile %}
+        <p>Your Percentile: <b>{{ percentile }}</b></p>
+        {% endif %}
+
+        <hr>
+
+        <!-- PERCENTILE TO RANK -->
+
+        <h3>Percentile → Rank</h3>
+
+        <form action="/predictor/percentile" method="POST" onsubmit="return handleSubmit(this)">
+
+            <input type="number" step="0.0001" name="percentile" min="0" max="100" required>
+
+            <button type="submit">Calculate Rank</button>
+
+        </form>
+
+        {% if rank %}
+        <p>Estimated Rank: <b id="student-rank">{{ rank }}</b></p>
+        {% endif %}
+
+        <hr>
+
+        <!-- RANK TO COLLEGES -->
+
+        <h3>Rank → Find Colleges</h3>
+
+        <form action="/college-finder" method="POST" onsubmit="return handleSubmit(this)">
+
+            <label>Exam</label>
+
+            <select name="exam">
+                <option value="JEE Main">JEE Main</option>
+                <option value="JEE Advanced">JEE Advanced</option>
+            </select>
+
+            <label>Your Rank</label>
+            <input type="number" name="rank" required>
+
+            <label>Counselling</label>
+
+            <select name="counselling">
+                <option value="">All</option>
+                <option value="JoSAA">JoSAA</option>
+                <option value="UPTAC">UPTAC</option>
+                <option value="JAC Delhi">JAC Delhi</option>
+                <option value="JAC Chandigarh">JAC Chandigarh</option>
+                <option value="HBTU">HBTU</option>
+                <option value="MMMUT">MMMUT</option>
+            </select>
+
+            <button type="submit">Find Colleges</button>
+
+        </form>
+
+        {% if colleges is defined %}
+
+        {% if colleges|length > 0 %}
+
+        <h3 id="college-results">Recommended Colleges</h3>
+
+        <div class="college-grid">
+            {% for college in colleges %}
+            <div class="card">
+                <h4>{{ college.name }}</h4>
+                <p>{{ college.location }}</p>
+                <p>Closing Rank: {{ college.closing_rank }}</p>
+                <a href="/college/{{ college.id }}" class="btn">View Details</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% else %}
+
+        <p id="no-results" style="text-align:center; color:red; margin-top:20px;">
+            ❌ No college recommendations found for your rank.
+        </p>
+
+        {% endif %}
+
+        {% endif %}
+
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+    // 🔥 LOADER FUNCTION
+    function handleSubmit(form) {
+
+        let loader = document.getElementById("loader");
+        loader.style.display = "flex";
+
+        setTimeout(function () {
+            form.submit();
+        }, 2000);
+
+        return false;
+    }
+
+
+    // WHATSAPP AUTO MESSAGE
+
+    let rankElement = document.getElementById("student-rank");
+
+    if (rankElement) {
+
+        let rank = rankElement.innerText;
+
+        let message =
+            "Hello, I checked my JEE rank prediction on your website. My estimated rank is "
+            + rank +
+            ". Please guide me for engineering counselling.";
+
+        let encoded = encodeURIComponent(message);
+
+        let number = "917455970943";
+
+        let btn = document.getElementById("whatsapp-btn");
+
+        if (btn) {
+            btn.href = "https://wa.me/" + number + "?text=" + encoded;
+        }
+
+    }
+
+
+    // AUTO SCROLL
+
+    window.onload = function () {
+
+        let results = document.getElementById("college-results");
+        let noResults = document.getElementById("no-results");
+
+        let rankInput = document.querySelector('input[name="rank"]');
+
+        if (rankInput && (results || noResults)) {
+
+            if (results) {
+                results.scrollIntoView({ behavior: "smooth" });
+            }
+            else if (noResults) {
+                noResults.scrollIntoView({ behavior: "smooth" });
+            }
+
+        }
+
+    };
+
+</script>
+
+{% endblock %}

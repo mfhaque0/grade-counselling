@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+<div class="college-card" style="max-width:700px;margin:40px auto;">
+
+<h2>Edit College</h2>
+
+<form method="POST">
+
+<input name="name" value="{{ college.name }}" placeholder="College Name" required>
+<br><br>
+
+<input name="location" value="{{ college.location }}" placeholder="Location">
+<br><br>
+
+<input name="closing_rank" value="{{ college.closing_rank }}" placeholder="Closing Rank">
+<br><br>
+
+<textarea name="overview" placeholder="Overview">{{ college.overview }}</textarea>
+<br><br>
+
+<textarea name="facilities" placeholder="Facilities">{{ college.facilities }}</textarea>
+<br><br>
+
+<input name="airport" value="{{ college.airport }}" placeholder="Nearest Airport">
+<br><br>
+
+<input name="railway" value="{{ college.railway }}" placeholder="Nearest Railway">
+<br><br>
+
+<button class="btn">Update College</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}

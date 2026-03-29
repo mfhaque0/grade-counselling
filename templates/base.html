@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <title>Grade Counselling | Engineering Rank Predictor</title>
+
+   <meta name="description"
+      content="Find the best engineering college based on your JEE rank. Get counselling guidance for JoSAA, UPTAC, JAC Delhi and more.">
+
+   <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
+
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=3">
+
+</head>
+
+
+
+<body>
+
+   <!-- NAVBAR -->
+
+   <header class="header">
+
+      <nav class="navbar">
+
+         <div class="nav-container">
+
+            <a href="/" class="logo">Grade Counselling</a>
+
+            <div class="nav-links">
+
+               <a href="/">Home</a>
+               <a href="/entrance-exams">Exams</a>
+               <a href="/counselling">Counselling</a>
+               <a href="/college-finder">Rank Predictor</a>
+               <a href="/colleges">Colleges</a>
+
+            </div>
+
+         </div>
+
+      </nav>
+
+   </header>
+
+
+   <!-- MAIN CONTENT -->
+
+   <main class="main-content">
+
+      {% block content %}
+
+      {% endblock %}
+
+   </main>
+
+
+   <!-- FOOTER -->
+
+   <footer class="footer">
+
+      <div class="footer-container">
+
+         <div class="footer-grid">
+
+            <div class="footer-section">
+
+               <h2>Grade Counselling</h2>
+
+               <p>
+                  Grade Counselling is a smart platform designed to help engineering aspirants choose the best college
+                  based on their rank, exam performance, and counselling system. Our goal is to simplify the complex
+                  admission process and provide clear, data-driven guidance to students.
+               </p>
+
+               <p>
+                  With features like rank prediction, college recommendation, and real-time counselling insights,
+                  students can make informed decisions about their future. Whether it’s JoSAA, CSAB, or state-level
+                  counselling, our platform helps you explore the right opportunities with confidence.
+               </p>
+
+               
+            </div>
+
+
+            <div class="footer-section">
+
+               <h4>Quick Links</h4>
+
+               <ul>
+
+                  <li><a href="/">Home</a></li>
+                  <li><a href="/entrance-exams">Entrance Exams</a></li>
+                  <li><a href="/counselling">Counselling Portals</a></li>
+                  <li><a href="/college-finder">Rank Predictor</a></li>
+                  <li><a href="/colleges">College List</a></li>
+
+               </ul>
+
+            </div>
+
+
+            <div class="footer-section">
+
+               <h4>Counselling Systems</h4>
+
+               <ul>
+
+                  <li>JoSAA</li>
+                  <li>UPTAC</li>
+                  <li>JAC Delhi</li>
+                  <li>JAC Chandigarh</li>
+                  <li>HBTU Counselling</li>
+
+               </ul>
+
+            </div>
+
+
+            <div class="footer-section">
+
+               <h4>Contact</h4>
+
+               <p>Email: info@gradecounselling.com</p>
+               <p>Location: Lucknow, India</p>
+
+            </div>
+
+         </div>
+
+
+         <div class="footer-bottom">
+
+            <p>© 2026 Grade Counselling. All rights reserved.</p>
+
+         </div>
+
+      </div>
+
+   </footer>
+   <!-- WHATSAPP COUNSELLOR BUTTON -->
+
+   <a id="whatsapp-btn" target="_blank" style="
+   position:fixed;
+   bottom:20px;
+   right:20px;
+   background:#25D366;
+   color:white;
+   padding:12px 18px;
+   border-radius:50px;
+   font-weight:600;
+   text-decoration:none;
+   box-shadow:0 4px 10px rgba(0,0,0,0.2);
+   z-index:999;">
+      Chat Counsellor
+   </a>
+
+   <script>
+
+      let message = "Hello, I need engineering admission counselling. Please guide me.";
+
+      let encoded = encodeURIComponent(message);
+
+      let number = "917455970943";
+
+      document.getElementById("whatsapp-btn").href =
+         "https://wa.me/" + number + "?text=" + encoded;
+
+   </script>
+
+</body>
+
+</html>

@@ -1,0 +1,277 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Find Your Best Engineering College</h1>
+
+        <p>
+            Predict the best colleges based on your JEE rank, exam and counselling system.
+            Make smarter admission decisions.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/college-finder" class="btn">Predict Colleges</a>
+
+            <a href="/colleges" class="btn-outline">Explore Colleges</a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<div class="container">
+
+    <!-- 📰 NEWS SECTION (UPPER) -->
+
+    <section class="section">
+
+        <h2 class="section-title">Latest Education News</h2>
+
+        <div class="college-grid">
+
+            {% for article in news %}
+
+            <div class="card news-card">
+
+                <div class="card-content">
+
+                    <p class="news-date">
+                        {{ article.date }}
+                    </p>
+
+                    <h3>{{ article.title }}</h3>
+
+                    <p class="news-summary">
+                        {{ article.summary }}
+                    </p>
+
+                    <a href="https://wa.me/917455970943?text=Hello, I saw your website and need counselling guidance"
+                        class="btn-outline small-btn">
+                        Talk to Counsellor
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- 🏫 TOP COLLEGES -->
+
+    <section class="section">
+
+        <h2 class="section-title">Top Engineering Colleges</h2>
+
+        <div class="college-grid">
+
+            {% for college in colleges %}
+
+            <div class="card">
+
+                <div class="card-img"
+                    style="background-image:url('{{ url_for('static', filename=college.photo_url) }}');">
+                </div>
+
+                <div class="card-content">
+
+                    <h3>{{ college.name }}</h3>
+
+                    <p class="location">📍 {{ college.location }}</p>
+
+                    <a href="/college/{{ college.id }}" class="btn small-btn">View Details</a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+   
+
+    <!-- 🎓 COUNSELLING SYSTEMS -->
+
+    <section class="section">
+
+        <h2 class="section-title">Counselling Systems</h2>
+
+        <div class="college-grid">
+
+            {% for c in counselling %}
+
+            <div class="card card-content" style="text-align:center;">
+
+                <h3>{{ c.name }}</h3>
+
+                <a href="/counselling/{{ c.slug }}" class="btn-outline small-btn">
+                    View Colleges
+                </a>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+   
+
+    <!-- 💰 PRICING SECTION -->
+
+    <section class="section">
+
+        <h2 class="section-title">Our Counselling Plans</h2>
+
+        <div class="pricing-grid">
+
+            <!-- BASIC PLAN -->
+            <div class="pricing-card">
+
+                <h3>Basic Plan</h3>
+                <div class="price">₹999</div>
+
+                <ul>
+                    <li>✔ Counseling Help for JoSAA, CSAB and MCC (NEET UG)</li>
+                    <li>✔ Provision of preference order as pdf and sheet.</li>
+                    <li>✔ 1 to 1 guidance and mentorship via call or meet.</li>
+                    <li>✔ Complete assistantship throughout the process.</li>
+                </ul>
+
+                <a href="https://wa.me/917455970943?text=Hello, I want to book the Basic Plan (₹999). Please guide me."
+                    class="btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+            <!-- ADVANCED PLAN -->
+            <div class="pricing-card highlight">
+
+                <h3>Advanced Plan</h3>
+                <div class="price">₹1999</div>
+
+                <ul>
+                    <li>✔ Basic Plan + Counseling JAC, UP-TAC, MHT-CET, CUET, WB-JEE, COMED-K</li>
+                    <li>✔ Unlimited email and phone support for follow-up queries.</li>
+                    <li>✔ Provision of preference order as pdf and sheet.</li>
+                    <li>✔ Money refund* available if no seat alloted.</li>
+                </ul>
+
+                <a href="https://wa.me/917455970943?text=Hello, I want to book the Advanced Plan (₹1999). Please guide me."
+                    class="btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+            <!-- PREMIUM PLAN -->
+            <div class="pricing-card">
+
+                <h3>Premium Plan</h3>
+                <div class="price">₹5999</div>
+
+                <ul>
+                    <li>✔ Assistance with All Engineering and Medical Counsellings.</li>
+                    <li>✔ Feel free and leave everything to us. We will carry out all the process for you.</li>
+                    <li>✔ Priority email, phone, and video call support with dedicated counselor.</li>
+                    <li>✔ Money refund* available if no seat alloted.</li>
+                </ul>
+
+                <a href="https://wa.me/917455970943?text=Hello, I want to book the Premium Plan (₹5999). Please guide me."
+                    class="btn">
+                    Buy Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- COUNSELOR SECTION -->
+
+    <section class="counselor-section">
+
+        <img src="{{ url_for('static', filename='images/parvez_khan.jpg') }}" class="counselor-photo">
+
+        <div class="counselor-info">
+
+            <!-- ✅ ADDED LINE ABOVE -->
+            <p style="font-size:18px; font-weight:600; margin-bottom:8px;">
+                Get Personal Guidance from India's Top Counsellor
+            </p>
+
+            <span class="badge">TOP COUNSELOR</span>
+
+            <h2>Parvez Khan</h2>
+
+            <p class="exp">
+                Experience: 4+ Years
+            </p>
+
+            <p>
+                Expert counselling for engineering admissions including
+                <strong>JoSAA, UPTAC, HBTU and MMMUT</strong>.
+            </p>
+
+            <p>
+                Hundreds of students have successfully secured seats in top colleges with
+                strategic counselling guidance.
+            </p>
+
+            <!-- ✅ WHATSAPP BUTTON -->
+            <a href="https://wa.me/917455970943?text=Hello, I want to book a counselling session. Please guide me."
+                class="btn">
+                Book Consultation
+            </a>
+
+        </div>
+
+    </section>
+
+    <br><br>
+
+    <!-- CALL TO ACTION -->
+
+    <section class="cta-section">
+
+        <h2>Start Your Engineering Journey Today</h2>
+
+        <p>
+            Use our predictor tools and counselling support to find the best college for your future.
+        </p>
+
+        <div class="cta-buttons">
+
+            <a href="/college-finder" class="btn">Predict Your College</a>
+
+            <a href="/entrance-exams" class="btn-outline">Explore Exams</a>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock %}

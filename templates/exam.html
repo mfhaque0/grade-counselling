@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- PAGE HEADER -->
+
+<section class="hero" style="padding:80px 20px;">
+    <h1>Engineering Entrance Exams</h1>
+    <p>Explore major exams that open the doors to top engineering colleges in India.</p>
+</section>
+
+
+<div class="container">
+
+<h2 style="text-align:center;">Popular Entrance Exams</h2>
+
+<div class="exam-grid">
+
+{% for exam in exams %}
+
+<div class="exam-card">
+
+<div class="exam-icon">
+🎓
+</div>
+
+<h3>{{ exam.name }}</h3>
+
+<p>{{ exam.purpose }}</p>
+
+<a href="/entrance-exams/{{ exam.slug }}" class="btn">
+View Details
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+<!-- EXTRA INFO SECTION -->
+
+<div style="margin-top:80px;text-align:center;">
+
+<h2>Which Exam Should You Take?</h2>
+
+<p style="max-width:700px;margin:auto;color:#666;margin-top:10px;">
+Different engineering colleges accept different entrance exams. 
+For example IITs accept JEE Advanced, while NITs and IIITs accept JEE Main. 
+Understanding the exam system helps you plan your admission strategy.
+</p>
+
+<a href="/college-finder" class="btn" style="margin-top:20px;">
+Find Colleges by Rank
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="college-profile">
+
+<!-- 🔥 HERO SECTION -->
+<div class="hero-banner"
+style="background-image:url('{{ url_for('static', filename=college.photo_url) }}');">
+
+<div class="overlay">
+<h1>{{ college.name }}</h1>
+<p>{{ college.location }}</p>
+</div>
+
+</div>
+
+
+<!-- 📊 MAIN GRID -->
+<div class="info-grid">
+
+<!-- LEFT CONTENT -->
+<div class="main-content">
+
+<!-- 🏫 OVERVIEW -->
+<section>
+<h2>Overview</h2>
+<p>{{ college.overview }}</p>
+</section>
+
+<!-- 🏆 RANKING -->
+<section>
+<h2>Ranking</h2>
+<p>{{ college.ranking or "N/A" }}</p>
+</section>
+
+<!-- 🎓 COURSES -->
+<section>
+<h2>Courses & Branches</h2>
+<p>{{ college.courses or "CSE, IT, ECE, Mechanical, Civil" }}</p>
+</section>
+
+<!-- 💰 FEES -->
+<section>
+<h2>Fee Structure</h2>
+<p>{{ college.fees or "Approx ₹1-2 Lakh per year" }}</p>
+</section>
+
+<!-- 📈 PLACEMENTS -->
+<section>
+<h2>Placements</h2>
+<p>{{ college.placement or "Average 4-8 LPA, Top companies visit campus" }}</p>
+</section>
+
+<!-- 🏢 FACILITIES -->
+<section>
+<h2>Campus Facilities</h2>
+<p>{{ college.facilities }}</p>
+</section>
+
+<!-- 📊 CUTOFF -->
+<section>
+<h2>Cutoff / Closing Rank</h2>
+<p>{{ college.closing_rank }}</p>
+</section>
+
+</div>
+
+
+<!-- RIGHT SIDEBAR -->
+<aside class="sidebar">
+
+<!-- 📍 LOCATION -->
+<div class="card">
+<h3>Location</h3>
+<p>{{ college.location }}</p>
+</div>
+
+<!-- ✈️ CONNECTIVITY -->
+<div class="card">
+<h3>Connectivity</h3>
+<p><strong>Airport:</strong> {{ college.airport }}</p>
+<p><strong>Railway:</strong> {{ college.railway }}</p>
+</div>
+
+<!-- 📘 ADMISSION -->
+<div class="card">
+<h3>Mode of Admission</h3>
+<p>{{ college.admission or "JEE Main / UPTAC Counselling" }}</p>
+</div>
+
+<!-- 💬 CTA -->
+<div class="card highlight">
+
+<h3>Need Guidance?</h3>
+<p>Get expert counselling for this college</p>
+
+<a id="whatsapp-btn" class="btn">
+Talk on WhatsApp
+</a>
+
+</div>
+
+</aside>
+
+</div>
+
+</div>
+
+<!-- 🔥 WHATSAPP SCRIPT -->
+<script>
+const btn = document.getElementById("whatsapp-btn");
+const collegeName = "{{ college.name }}";
+
+let msg = "Hello, I need counselling for " + collegeName + ". Please guide me.";
+btn.href = "https://wa.me/917455970943?text=" + encodeURIComponent(msg);
+</script>
+
+{% endblock %}

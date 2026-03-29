@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO HEADER -->
+
+<section class="hero" style="padding:80px 20px;">
+    <h1>{{ exam.name }}</h1>
+    <p style="max-width:700px;margin:auto;">
+        {{ exam.overview }}
+    </p>
+</section>
+
+<div class="container">
+
+<!-- BREADCRUMB -->
+
+<nav class="breadcrumb" style="margin-bottom:30px;">
+<a href="/">Home</a> → 
+<a href="/entrance-exams">Entrance Exams</a> → 
+<strong>{{ exam.name }}</strong>
+</nav>
+
+
+<div class="exam-layout">
+
+<!-- MAIN CONTENT -->
+
+<div class="exam-main">
+
+<!-- SNAPSHOT -->
+
+<section class="info-section">
+
+<h2>Exam Snapshot</h2>
+
+<table class="data-table">
+
+<tr>
+<td>Also Known As</td>
+<td>{{ exam.also_known_as }}</td>
+</tr>
+
+<tr>
+<td>Exam Category</td>
+<td>{{ exam.category }}</td>
+</tr>
+
+<tr>
+<td>Exam Level</td>
+<td>{{ exam.level }}</td>
+</tr>
+
+<tr>
+<td>Exam Mode</td>
+<td>{{ exam.mode }}</td>
+</tr>
+
+<tr>
+<td>Conducted By</td>
+<td>{{ exam.conductor }}</td>
+</tr>
+
+</table>
+
+</section>
+
+
+
+<!-- UPDATES -->
+
+<section class="updates-box">
+
+<h2>Latest Updates</h2>
+
+<ul>
+
+{% for update in exam.updates %}
+
+<li style="margin-bottom:10px;">
+<span class="update-date">{{ update.date }}</span>
+—
+<span class="update-text">{{ update.text }}</span>
+</li>
+
+{% endfor %}
+
+</ul>
+
+</section>
+
+
+
+<!-- WHATS NEW -->
+
+<section style="margin-top:40px;">
+
+<h2>What's New in {{ exam.name }}?</h2>
+
+<div class="highlight-grid">
+
+{% for item in exam.whats_new %}
+
+<div class="highlight-item">
+
+{{ item }}
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+</div>
+
+
+<!-- SIDEBAR -->
+
+<aside class="exam-sidebar">
+
+<div class="sidebar-card">
+
+<h3>Quick Tools</h3>
+
+<p style="color:#666;">
+Predict colleges based on your expected rank and get counselling support.
+</p>
+
+<a href="/college-finder" class="btn" style="margin-top:10px;">
+Predict Colleges
+</a>
+
+<a href="/counselling" class="btn-outline" style="margin-top:10px;display:block;text-align:center;">
+Talk to Counselor
+</a>
+
+</div>
+
+
+<div class="sidebar-card" style="margin-top:20px;">
+
+<h3>Important Tip</h3>
+
+<p style="font-size:0.95rem;color:#666;">
+Prepare strategically and understand cutoff trends to maximize your chances of getting the best college.
+</p>
+
+</div>
+
+</aside>
+
+</div>
+
+
+
+<!-- CTA SECTION -->
+
+<div style="text-align:center;margin-top:80px;">
+
+<h2>Plan Your Admission Strategy</h2>
+
+<p style="color:#666;margin-top:10px;">
+Use our tools to predict your college options and prepare for counselling rounds.
+</p>
+
+<a href="/college-finder" class="btn" style="margin-top:15px;">
+Check Your College Options
+</a>
+
+</div>
+
+</div>
+
+{% endblock %}

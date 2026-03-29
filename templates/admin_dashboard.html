@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+<h1>Admin Dashboard</h1>
+
+<!-- ADD COLLEGE -->
+
+<h2>Add College</h2>
+
+<form action="/admin/add-college" method="POST" enctype="multipart/form-data">
+
+<input name="name" placeholder="College Name" required>
+
+<input name="location" placeholder="Location" required>
+
+<input name="closing_rank" placeholder="Closing Rank">
+
+<select name="counselling_id">
+
+{% for c in counselling %}
+<option value="{{ c.id }}">{{ c.name }}</option>
+{% endfor %}
+
+</select>
+
+<input type="file" name="images" multiple>
+
+<button type="submit">Add College</button>
+
+</form>
+
+<hr>
+
+
+<!-- ADD COUNSELLING -->
+
+<h2>Add Counselling System</h2>
+
+<form action="/admin/add-counselling" method="POST">
+
+<input name="name" placeholder="Counselling Name" required>
+
+<input name="slug" placeholder="slug" required>
+
+<button>Add Counselling</button>
+
+</form>
+
+<hr>
+
+
+<!-- ADD NEWS -->
+
+<h2>Add News</h2>
+
+<form action="/admin/add-news" method="POST">
+
+<input name="title" placeholder="Title" required>
+
+<input name="summary" placeholder="Summary">
+
+<input name="date" placeholder="Date">
+
+<button>Add News</button>
+
+</form>
+
+<hr>
+
+
+<!-- COLLEGE LIST -->
+
+<h2>Colleges</h2>
+
+<table class="data-table">
+
+<tr>
+<th>Name</th>
+<th>Location</th>
+<th>Rank</th>
+<th>Action</th>
+</tr>
+
+{% for college in colleges %}
+
+<tr>
+<td>{{ college.name }}</td>
+<td>{{ college.location }}</td>
+<td>{{ college.closing_rank }}</td>
+
+<td>
+    <a href="/admin/edit-college/{{ college.id }}">Edit</a> |
+    <a href="/admin/delete-college/{{ college.id }}" style="color:red;">Delete</a>
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<hr>
+
+<!-- ✅ NEWS LIST ADDED HERE -->
+
+<h2>News</h2>
+
+<table class="data-table">
+
+<tr>
+<th>Title</th>
+<th>Date</th>
+<th>Action</th>
+</tr>
+
+{% for n in news %}
+
+<tr>
+<td>{{ n.title }}</td>
+<td>{{ n.date }}</td>
+<td>
+    <a href="/admin/edit-news/{{ n.id }}">Edit</a> |
+    <a href="/admin/delete-news/{{ n.id }}" style="color:red;">Delete</a>
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+{% endblock %}

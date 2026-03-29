@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container">
+
+<h1 style="text-align:center;margin-bottom:30px;">
+Engineering Counselling Systems
+</h1>
+
+<p style="text-align:center;color:#666;">
+Click a counselling system to see participating colleges.
+</p>
+
+<div class="college-grid">
+
+{% for portal in portals %}
+
+<div class="card card-content">
+
+<h3>{{ portal.name }}</h3>
+
+
+
+<a href="/counselling/{{ portal.slug }}" class="btn">
+View Colleges
+</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</div>
+
+{% endblock %}

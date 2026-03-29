@@ -547,4 +547,74 @@ footer a:hover {
     .predictor-box {
         padding: 30px 20px;
     }
+
+/* ===== IMPROVED MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+
+    /* Navbar Fix */
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        margin: 0;
+        font-size: 0.9rem;
+    }
+
+    /* Hero Fix */
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+        line-height: 1.3;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Container spacing */
+    .container {
+        padding: 30px 15px;
+    }
+
+    /* Cards */
+    .card-content {
+        padding: 20px 15px;
+    }
+
+    /* Predictor Box */
+    .predictor-box {
+        padding: 20px 15px;
+    }
+
+    /* Buttons */
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    /* WhatsApp button */
+    #whatsapp-btn {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
+}
 }
